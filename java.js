@@ -1,16 +1,21 @@
 
 
-function buildGrid() {
-    const rowContainer = document.createElement("div");
-    const grid = document.querySelector("#container")
-    rowContainer.setAttribute("style", "display: flex;")
+function buildRow() {
     for (i = 0; i < 16; i++) {
-        const rowDiv = document.createElement("div")
-        rowDiv.setAttribute("style", "min-width: 50px; min-height: 50px;")
-        rowContainer.appendChild(rowDiv)
-        grid.appendChild(rowContainer)
-    }}
+        const div = document.createElement("div");
+        div.setAttribute("style", "height: 50px; width: 50ps;")
+        const row = document.createElement("div")
+        row.setAttribute("class", "row-container");
+        row.appendChild(div)
+    }
+    return row
+}
 
-
-buildGrid()
+function buildGrid() {
+    for (i = 0; i < 16; i++) {
+        const newRow = buildRow()
+        const container = document.querySelector("#container")
+        container.appendChild(newRow)
+    }
+}
 

@@ -1,21 +1,21 @@
-
-
-function buildRow() {
-    for (i = 0; i < 16; i++) {
+function buildRow(rowNum) {
+    const row = document.createElement("div")
+    row.setAttribute("class", "row-container")
+    const container = document.querySelector("#container")
+    for (i = 0; i < rowNum; i++) {
         const div = document.createElement("div");
-        div.setAttribute("style", "height: 50px; width: 50ps;")
-        const row = document.createElement("div")
-        row.setAttribute("class", "row-container");
+        div.setAttribute("style", "min-height: 30px; min-width: 30px;")
+        div.setAttribute("class", "cell")
         row.appendChild(div)
+        row.setAttribute("style", "display: flex;")
+        container.appendChild(row)
     }
-    return row
 }
 
-function buildGrid() {
-    for (i = 0; i < 16; i++) {
-        const newRow = buildRow()
-        const container = document.querySelector("#container")
-        container.appendChild(newRow)
-    }
-}
+let row = 16
+let column = 16
+
+let grid = row * column
+
+buildRow(grid)
 

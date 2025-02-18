@@ -1,3 +1,13 @@
+function buildGrid(num) {
+    if (num < 1 || num > 100) {
+        prompt("Invalid Input. Iput number between 1 and 100")
+    }
+}
+
+
+
+/* original code for the one grid
+
 function buildRow(rowNum) {
     const row = document.createElement("div")
     row.setAttribute("class", "row-container")
@@ -18,4 +28,10 @@ let column = 16
 let grid = row * column
 
 buildRow(grid)
+
+const cells = document.querySelector(".row-container");
+cells.addEventListener("mouseover", (e) => {
+    e.target.style.backgroundColor = "black"
+
+})*/
 

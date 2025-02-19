@@ -25,6 +25,13 @@ function defaultGrid(num) {
     buildGrid(num)
 }
 
+function randomColor() {
+    let r = Math.floor(Math.random() * 255)
+    let g = Math.floor(Math.random() * 255)
+    let b = Math.floor(Math.random() * 255)
+    return (`rgba(${r}, ${g}, ${b})`)
+}
+
 const mainContainer = document.querySelector("#container")
 const gridContainer = document.createElement("div");
 gridContainer.setAttribute("style", "width: 800px; height: 800px; display: flex; flex-direction: column;")
@@ -32,7 +39,7 @@ gridContainer.setAttribute("class", "grid-container")
 mainContainer.appendChild(gridContainer)
 defaultGrid(16)
 gridContainer.addEventListener("mouseover", (e) => {
-    e.target.style.backgroundColor = "black"
+    e.target.style.backgroundColor = randomColor()
 })
 
 

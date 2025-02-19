@@ -1,37 +1,51 @@
 function buildGrid(num) {
-    if (num < 1 || num > 100) {
-        prompt("Invalid Input. Iput number between 1 and 100")
+    if (parseInt(num) < 1 || parseInt(num) > 100) {
+        prompt("Invalid Input. Input number between 1 and 100")
+        getNumber()
     }
-}
+
+    grid = num * num
 
 
-
-/* original code for the one grid
-
-function buildRow(rowNum) {
-    const row = document.createElement("div")
-    row.setAttribute("class", "row-container")
-    const container = document.querySelector("#container")
-    for (i = 0; i < rowNum; i++) {
+    for (i = 0; i < grid; i++) {
         const div = document.createElement("div");
-        div.setAttribute("style", "min-height: 30px; min-width: 30px;")
-        div.setAttribute("class", "cell")
-        row.appendChild(div)
-        row.setAttribute("style", "display: flex;")
-        container.appendChild(row)
+        div.setAttribute("class", "cell");
+        div.setAttribute("style", `height: ${800/num}px; width: ${800/num}px;`);
+        gridContainer.appendChild(div);
     }
 }
 
-let row = 16
-let column = 16
+function getNumber() {
+    let number = prompt("Enter new grid size:")
+    return number
+}
 
-let grid = row * column
 
-buildRow(grid)
+function defaultGrid(num) {
+    buildGrid(num)
+}
 
-const cells = document.querySelector(".row-container");
-cells.addEventListener("mouseover", (e) => {
+const mainContainer = document.querySelector("#container")
+const gridContainer = document.createElement("div");
+gridContainer.setAttribute("style", "width: 800px; height: 800px; display: flex; flex-direction: column;")
+gridContainer.setAttribute("class", "grid-container")
+mainContainer.appendChild(gridContainer)
+defaultGrid(16)
+gridContainer.addEventListener("mouseover", (e) => {
     e.target.style.backgroundColor = "black"
+})
 
-})*/
+
+const buttonContainer = document.createElement("div")
+buttonContainer.setAttribute("class", "button-container")
+const newButton = document.createElement("button")
+newButton.textContent = "Click me!"
+buttonContainer.appendChild(newButton)
+document.body.insertBefore(buttonContainer, mainContainer)
+
+
+newButton.addEventListener("click", (e) => {
+    document.querySelector(".grid-container").innerHTML = ""
+    buildGrid(getNumber())
+})
 
